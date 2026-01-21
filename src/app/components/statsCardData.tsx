@@ -35,9 +35,9 @@ const StatsCardData = () => {
   ];
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2 }>
       {statsCardData.map((item, index) => (
-    <Grid size={3} key={index}>
+    <Grid  size={{ xs: 12, md:6 ,lg:3 }}  key={index}>
           <StatsCard {...item} />
         </Grid>
       ))}

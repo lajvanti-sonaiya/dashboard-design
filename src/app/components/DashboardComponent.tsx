@@ -16,7 +16,13 @@ const DashboardComponent = () => {
         gap: 4,
         p: 3,
         backgroundColor: colors.background,
-        minWidth: "945px",
+        width: {
+          md: "500px",
+          lg:"auto"
+        },
+        minWidth: {
+          lg: "945px",
+        },
         height: "100%",
       }}
     >
@@ -25,13 +31,39 @@ const DashboardComponent = () => {
       <StatsCardData />
 
       <Box
-        sx={{ display: "flex", width: "100%", alignItems: "normal", gap: 2 }}
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "column",
+            md: "column",
+            lg: "row",
+          },
+          width: "100%",
+          alignItems: "normal",
+          gap: 2,
+        }}
       >
-        <Box sx={{ width: "55%" }}>
+        <Box
+          sx={{
+            width: {
+              xs: "100%",
+              md: "100%",
+              lg: "55%",
+            },
+          }}
+        >
           {/* graph section  */}
           <ProjectPerformance />
         </Box>
-        <Box sx={{ width: "45%" }}>
+        <Box
+          sx={{
+            width: {
+              xs: "100%",
+              md: "100%",
+              lg: "45%",
+            },
+          }}
+        >
           {/* pie chart section */}
           <TaskDistribution />
         </Box>

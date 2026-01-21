@@ -40,6 +40,10 @@ const Calender = () => {
                   border: 0,
                   color: colors.white,
                   height: "25px",
+
+                  "& .Mui-selected": {
+                    background: colors.gradients,
+                  },
                 },
 
                 "&:hover": { background: colors.gradients, height: "25px" },

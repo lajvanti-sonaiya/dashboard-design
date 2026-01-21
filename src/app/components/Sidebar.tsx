@@ -125,6 +125,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
+  
 
   const handleDrawer = () => {
     setOpen(!open);

@@ -6,15 +6,12 @@ import Sidebar from "./Sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <Box sx={{ display: "flex"     ,    minHeight: "100vh",
-}}>
+    <Box sx={{ display: "flex", minHeight: "100vh" }}>
       {/* sideBar */}
       <Sidebar />
 
       {/* center dashboard */}
-      <Box component="main" >
-        {children}
-      </Box>
+      <Box component="main">{children}</Box>
 
       {/* right side bar */}
       <Divider orientation="vertical" variant="middle" flexItem />
