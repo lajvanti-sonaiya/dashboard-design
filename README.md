@@ -3,14 +3,6 @@
  **dashboard application** built with **next.js**. .
 
 
-## Features
-
-- Add new notes quickly
-- View all saved notes with pagination, search and filter
-- Edit existing notes
-- Delete unwanted notes
-
-
 ## Tech Stack
 
 - **Frontend:** Next.js(app router), TypeScript
@@ -34,8 +26,7 @@ cd dashboard-design
 npm install
 
 
-
-4. start server
+3. start server
 
 npm start or npm run dev
 
