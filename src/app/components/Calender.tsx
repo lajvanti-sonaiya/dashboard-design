@@ -10,12 +10,10 @@ const Calender = () => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           sx={{
-            width: 220,
+            width: 250,
             height: 270,
             margin: 0,
-            "& .MuiDayCalendar-weekContainer": {
-              height: "25px",
-            },
+           
           }}
           slotProps={{
             calendarHeader: {
@@ -23,30 +21,28 @@ const Calender = () => {
                 "&.MuiPickersCalendarHeader-root": {
                   margin: 0,
                   padding: 0,
+                  fontWeight:500,
 
                   ".MuiPickersCalendarHeader-labelContainer": {
                     fontWeight: 700,
-                    fontSize: "14px",
                   },
                 },
               },
             },
             day: {
               sx: {
-                height: "25px",
                 borderRadius: "20%",
                 "&.MuiPickersDay-today": {
                   background: colors.gradients,
                   border: 0,
                   color: colors.white,
-                  height: "25px",
 
                   "& .Mui-selected": {
                     background: colors.gradients,
                   },
                 },
 
-                "&:hover": { background: colors.gradients, height: "25px" },
+                "&:hover": { background: colors.gradients},
               },
             },
           }}

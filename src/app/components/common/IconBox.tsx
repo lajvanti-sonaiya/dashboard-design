@@ -15,7 +15,7 @@ interface IconBoxProps {
 }
 const IconBox = ({ icon, colour }: IconBoxProps) => {
   return (
-    <Box sx={{ backgroundColor: colour.light , borderRadius:2, width:"fit-content" }}>
+    <Box sx={{ backgroundColor: colour.light , borderRadius:"12px", width:"44px", height:"44px", display:"flex", alignItems:"center", justifyContent:"center" }}>
       <IconButton sx={{color:colour.main}}>{icon}</IconButton>
     </Box>
   );

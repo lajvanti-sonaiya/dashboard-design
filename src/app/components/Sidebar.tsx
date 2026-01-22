@@ -16,8 +16,9 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { colors } from "../../mui/colour";
 import { Badge, Button } from "@mui/material";
+import { Padding } from "@mui/icons-material";
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 export const MenuItems = [
   {
@@ -125,7 +126,6 @@ const Drawer = styled(MuiDrawer, {
 }));
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
-  
 
   const handleDrawer = () => {
     setOpen(!open);
@@ -135,38 +135,45 @@ const Sidebar = () => {
     <Drawer variant="permanent" open={open}>
       <CssBaseline />
       <DrawerHeader
-        sx={{ display: "flex", justifyContent: "start", paddingX: "20px" }}
+        sx={{ display: "flex", justifyContent: "start", padding: "24px" }}
       >
         {open ? (
           <Box
             sx={{
               display: "flex",
-              gap: 1,
+              gap: "12px",
               alignItems: "center",
               justifyContent: "flex-start",
               justifyItems: "flex-start",
             }}
           >
-            <Button
-              variant="contained"
+            <Typography
+              variant="h1"
               sx={{
-                width: "auto",
-                padding: 1,
-                minWidth: "35px",
-                fontWeight: 700,
-                boxShadow: 8,
+                height: "42px",
+                width: "42px",
+                fontSize: "20px",
+                fontWeight: 600,
+                boxShadow: "0 8px 24px rgba(99, 102, 241, 0.3)",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: colors.white,
+                borderRadius: "12px",
+                background: colors.gradients,
               }}
               //   onClick={handleDrawer}
             >
               N
-            </Button>
+            </Typography>
             <Typography
               sx={{
                 background: colors.gradients,
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
-                fontWeight: 700,
+                fontWeight: 600,
+                fontSize: "22px",
               }}
             >
               Nexus
@@ -211,13 +218,14 @@ const Sidebar = () => {
                 <ListItem
                   key={menu.label}
                   disablePadding
-                  sx={{ display: "block" }}
+                  sx={{ display: "block", color: colors.secondary ,}}
                 >
                   <ListItemButton
                     sx={[
                       {
                         minHeight: 48,
-                        px: 2.5,
+                        // px: 2.5,
+                        padding:"12px 16px" ,
                         ":hover": {
                           backgroundColor: colors.blue.light,
                           borderRadius: "10px",
@@ -251,6 +259,7 @@ const Sidebar = () => {
                           minWidth: 0,
                           justifyContent: "center",
                           marginRight: 1,
+                          color: "text.secondary",
                         },
                       ]}
                     >
@@ -258,15 +267,15 @@ const Sidebar = () => {
                     </ListItemIcon>
                     <ListItemText
                       primary={menu.label}
-                      sx={[
-                        open
-                          ? {
-                              opacity: 1,
-                            }
-                          : {
-                              opacity: 0,
-                            },
-                      ]}
+                      sx={{
+                        "& .MuiTypography-root":{
+                          fontSize:"14px",
+                          fontWeight:600
+                        },
+                      
+                        opacity: 1,
+                        color: colors.textSecondary,
+                      }}
                     />
 
                     {menu.notification && (

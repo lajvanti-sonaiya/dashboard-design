@@ -14,7 +14,7 @@ const StatsCardData = () => {
       color: colors.purple,
     },
     {
-      title: "Completed",
+      title: "Task Completed",
       value: 124,
       icon: <CheckCircleIcon />,
       color: colors.green,
@@ -35,7 +35,7 @@ const StatsCardData = () => {
   ];
 
   return (
-    <Grid container spacing={2 }>
+    <Grid container spacing="20px">
       {statsCardData.map((item, index) => (
     <Grid  size={{ xs: 12, md:6 ,lg:3 }}  key={index}>
           <StatsCard {...item} />

@@ -1,15 +1,17 @@
 export const colors = {
   main: "#4F46E5",
-  secondary: "#00000099",
-
-  background: "#f4f7fd",
+  secondary: "#9ca3b4",
+  background: "#f5f7fa",
+  backgroundSecondary: "#f0f2f5",
+  buttonBackground: "#e8ebf0",
+  borderColor: "#00000014",
+  textSecondary:"#5a6275",
   white: "#FFFFFF",
   pink: "#b477ec",
-  gradients:
-    "linear-gradient(159deg,rgba(80, 116, 222, 1) 0%, rgba(186, 107, 242, 1) 50%, rgba(235, 77, 156, 1) 100%)",
+  gradients: "linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%)",
   blue: {
-    light: "#EEF2FF",
-    main: "#6366F1",
+    light: "#6366f126",
+    main: "#6366f1",
     dark: "#4338CA",
   },
   green: {
@@ -18,8 +20,8 @@ export const colors = {
     dark: "#15803D",
   },
   purple: {
-    light: "#F5F3FF",
-    main: "#8B5CF6",
+    light: "#a855f726",
+    main: "#a855f7",
     dark: "#6D28D9",
   },
   orange: {

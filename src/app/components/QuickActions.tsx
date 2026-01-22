@@ -34,7 +34,7 @@ const QuickActions = () => {
             >
               <IconBox colour={action.color} icon={action.icon} />
               {action.label && (
-                <Typography sx={{ fontSize: "12px" }}>
+                <Typography sx={{ fontSize: "12px" }} color="secondary">
                   {action.label}
                 </Typography>
               )}

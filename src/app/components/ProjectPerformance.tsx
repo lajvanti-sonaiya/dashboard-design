@@ -69,14 +69,16 @@ export default function ProjectPerformance() {
           size="small"
           sx={{
             mb: 2,
-            backgroundColor: colors.background,
+            backgroundColor: colors.backgroundSecondary,
             "& .MuiToggleButton-root": {
               textTransform: "capitalize",
-
-              borderRadius: "10px !important",
+              borderRadius: "6px !important",
               border: 0,
               margin: 0.5,
-              padding: 0.5,
+              padding: "2px 14px",
+              "& .Mui-selected": {
+                backgroundColor: colors.borderColor,
+              },
             },
           }}
         >
@@ -127,7 +129,7 @@ export default function ProjectPerformance() {
             color: colors.pink,
           },
         ]}
-        height={300}
+        height={220}
         borderRadius={8}
       />
     </BoxContainer>

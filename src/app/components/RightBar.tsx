@@ -9,7 +9,7 @@ import UpcomingTask from "./UpcomingTask";
 
 const RightBar = () => {
   return (
-    <Box sx={{ backgroundColor: colors.background, padding:2, display:"flex", flexDirection:"column",gap:2}} >
+    <Box sx={{ backgroundColor: colors.backgroundSecondary, padding:"24px", display:"flex", flexDirection:"column",gap:"24px"}} >
       <Calender />
       <QuickActions/>
       <UpcomingTask/>

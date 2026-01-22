@@ -1,4 +1,6 @@
 import { Card, Box, Typography } from "@mui/material";
+import IconBox from "./IconBox";
+import { colors } from "../../../mui/colour";
 
 interface StatsCardProps {
   title: string;
@@ -13,10 +15,18 @@ const StatsCard = ({ title, value, icon, color }: StatsCardProps) => {
       sx={{
         p: 2,
         borderRadius: "14px",
-        boxShadow: 1,
-        borderTop: `3px solid ${color.main}`,
+        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)",
         height: "100%",
-
+        position: "relative",
+        ":before": {
+          background: color.main,
+          content: "''",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "3px",
+        },
       }}
     >
       <Box
@@ -27,29 +37,28 @@ const StatsCard = ({ title, value, icon, color }: StatsCardProps) => {
           gap: 1,
         }}
       >
-        <Box>
-          {icon && (
-            <Box
-              sx={{
-                width: 42,
-                height: 42,
-                borderRadius: "12px",
-                backgroundColor: color.light,
-                color: color.main,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {icon}
-            </Box>
-          )}
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <IconBox colour={color} icon={icon} />
+
+          <Typography
+            sx={{
+              borderRadius: "6px",
+              padding: "4px 8px",
+              backgroundColor: colors.green.light,
+              color: colors.green.main,
+              margin: "10px",
+              fontSize: "12px",
+              fontWeight: 600,
+            }}
+          >
+            ↑ 10%
+          </Typography>
         </Box>
 
         <Box>
           <Typography
             sx={{
-              fontSize: "28px",
+              fontSize: "32px",
               fontWeight: 700,
             }}
           >
@@ -60,6 +69,7 @@ const StatsCard = ({ title, value, icon, color }: StatsCardProps) => {
             sx={{
               fontSize: "13px",
             }}
+            color="text.secondary"
           >
             {title}
           </Typography>

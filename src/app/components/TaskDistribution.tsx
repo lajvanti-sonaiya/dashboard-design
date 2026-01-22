@@ -21,16 +21,27 @@ const TaskDistribution = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            paddingBottom: "24px",
           }}
         >
           <Typography fontWeight={600}>Task Distribution</Typography>
           <Button>View All</Button>
         </Box>
 
-        <Box sx={{display:"flex", alignItems:"center" ,gap:2}}>
+        <Box
+          sx={{
+            display: "flex",
+            // justifyContent: "space-between",
+            alignItems: "center",
+            gap: 3,
+          }}
+        >
           <PieChart
+            // sx={{
+            //   "-webkit-flex": 0,
+            // }}
             width={200}
-            height={220}
+            height={200}
             hideLegend={true}
             series={[
               {
@@ -43,29 +54,50 @@ const TaskDistribution = () => {
             ]}
           />
 
-          <Box position="absolute" left="65px" textAlign="center">
+          <Box position="absolute" left="80px" textAlign="center">
             <Typography fontWeight={700} fontSize="22px">
               {totalTasks}
             </Typography>
-            <Typography variant="body2">Total Tasks</Typography>
+            <Typography
+              variant="body2"
+              color="secondary"
+              sx={{ fontSize: "11px" }}
+            >
+              Total Tasks
+            </Typography>
           </Box>
 
           <Box>
             {taskDistributionData.map((item) => (
-              <Box key={item.id} display="flex" alignItems="center" mb={1.2} >
+              <Box
+                key={item.id}
+                display="flex"
+                alignItems="center"
+                gap="10px"
+                mb={1.2}
+              >
                 <Box
                   sx={{
                     width: 10,
                     height: 10,
-                    borderRadius: "50%",
+                    borderRadius: "25%",
                     backgroundColor: item.color,
                     mr: 1,
                   }}
                 />
-                <Typography variant="body1" sx={{ minWidth: 90 ,fontSize:"12px"}}>
+                <Typography
+                  variant="body1"
+                  color="secondary"
+                  sx={{ minWidth: 90, fontSize: "12px" }}
+                >
                   {item.label}
                 </Typography>
-                <Typography variant="body1" sx={{fontSize:"12px"}}>{item.value}%</Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ fontSize: "12px", fontWeight: 600 }}
+                >
+                  {item.value}%
+                </Typography>
               </Box>
             ))}
           </Box>

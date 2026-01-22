@@ -22,7 +22,7 @@ const DashbordHeader = () => {
             lg: "row",
           },
         justifyContent: "space-between",
-        alignItems: "start",
+        alignItems: "center",
         gap:"10px"
       }}
     >
@@ -34,20 +34,19 @@ const DashbordHeader = () => {
         }}
       >
         <Typography
-          variant="h4"
+          variant="h1"
           sx={{
             fontSize: {
               xs: "16px",
               md: "20px",
               lg: "32px",
             },
-            lineHeight: 0.8,
             fontWeight: 600,
           }}
         >
           Good morning,James
         </Typography>
-        <Typography variant="caption">
+        <Typography sx={{fontSize:"14px"}} color="text.secondary" > 
           here what happing with your project today{" "}
         </Typography>
       </Box>

@@ -14,14 +14,14 @@ const DashboardComponent = () => {
         display: "flex",
         flexDirection: "column",
         gap: 4,
-        p: 3,
+        padding:"24px 32px",
         backgroundColor: colors.background,
         width: {
           md: "500px",
           lg:"auto"
         },
         minWidth: {
-          lg: "945px",
+          lg: "1213px",
         },
         height: "100%",
       }}
@@ -48,7 +48,7 @@ const DashboardComponent = () => {
             width: {
               xs: "100%",
               md: "100%",
-              lg: "55%",
+              lg: "65%",
             },
           }}
         >

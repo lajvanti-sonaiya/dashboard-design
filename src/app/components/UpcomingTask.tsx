@@ -71,6 +71,7 @@ const UpcomingTask = () => {
         {tasks.map((task, index) => (
           <ListItem sx={{ padding: 0, marginY: 2 }} key={task.id}>
             <Checkbox
+              sx={{color:colors.borderColor}}
               slotProps={{
                 input: { "aria-label": "controlled" },
               }}
