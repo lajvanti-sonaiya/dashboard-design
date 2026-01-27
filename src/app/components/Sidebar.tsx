@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  styled,
-  Theme,
-  CSSObject,
-  useTheme,
-} from "@mui/material/styles";
+import { styled, Theme, CSSObject, useTheme } from "@mui/material/styles";
 import {
   Box,
   CssBaseline,
@@ -106,12 +101,12 @@ const DesktopDrawer = styled(MuiDrawer, {
 
 export default function Sidebar() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [open, setOpen] = useState(!isMobile);
+  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("lg"));
+  const [open, setOpen] = useState(!isMobileOrTablet);
 
   useEffect(() => {
-    setOpen(!isMobile);
-  }, [isMobile]);
+    setOpen(!isMobileOrTablet);
+  }, [isMobileOrTablet]);
 
   const drawerContent = (
     <>
@@ -152,7 +147,7 @@ export default function Sidebar() {
         )}
       </DrawerHeader>
 
-   <List sx={{ marginX: "10px" }}>
+      <List sx={{ marginX: "10px" }}>
         <>
           {MenuItems.map((group) => (
             <Box key={group.section} sx={{ mb: 2 }}>
@@ -174,14 +169,14 @@ export default function Sidebar() {
                 <ListItem
                   key={menu.label}
                   disablePadding
-                  sx={{ display: "block", color: colors.secondary ,}}
+                  sx={{ display: "block", color: colors.secondary }}
                 >
                   <ListItemButton
                     sx={[
                       {
                         minHeight: 48,
                         // px: 2.5,
-                        padding:"12px 16px" ,
+                        padding: "12px 16px",
                         ":hover": {
                           backgroundColor: colors.blue.light,
                           borderRadius: "10px",
@@ -224,11 +219,11 @@ export default function Sidebar() {
                     <ListItemText
                       primary={menu.label}
                       sx={{
-                        "& .MuiTypography-root":{
-                          fontSize:"14px",
-                          fontWeight:600
+                        "& .MuiTypography-root": {
+                          fontSize: "14px",
+                          fontWeight: 600,
                         },
-                      
+
                         opacity: 1,
                         color: colors.textSecondary,
                       }}
@@ -249,35 +244,33 @@ export default function Sidebar() {
 
   return (
     <>
-      {isMobile && (
+      {isMobileOrTablet && (
         <IconButton
+          color="primary"
           onClick={() => setOpen(true)}
           sx={{
             position: "fixed",
             top: 16,
             left: 16,
-            zIndex: theme.zIndex.drawer + 1,
+            paddingLeft: "15px",
           }}
         >
           <MenuIcon />
         </IconButton>
       )}
 
-      {!isMobile && (
+      {!isMobileOrTablet && (
         <DesktopDrawer variant="permanent" open={open}>
           {drawerContent}
         </DesktopDrawer>
       )}
 
-      {isMobile && (
+      {isMobileOrTablet && (
         <MuiDrawer
           variant="temporary"
           open={open}
           onClose={() => setOpen(false)}
           ModalProps={{ keepMounted: true }}
-          sx={{
-            "& .MuiDrawer-paper": { width: drawerWidth },
-          }}
         >
           {drawerContent}
         </MuiDrawer>

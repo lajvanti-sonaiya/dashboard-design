@@ -6,7 +6,18 @@ import Sidebar from "./Sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <Box sx={{ display: "flex", minHeight: "100vh" }}>
+    <Box
+      sx={{
+        display: "flex",
+        minHeight: "100vh",
+        flexDirection: {
+          xs: "column",
+          sm: "column",
+          md: "column",
+          lg: "row",
+        },
+      }}
+    >
       {/* sideBar */}
       <Sidebar />
 

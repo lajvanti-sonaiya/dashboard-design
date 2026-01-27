@@ -56,10 +56,10 @@ export default function ProjectPerformance() {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: "start",
         }}
       >
-        <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
+        <Typography sx={{ fontSize: "16px", fontWeight: 700 }}>
           ProjectPerformance{" "}
         </Typography>
         <ToggleButtonGroup
