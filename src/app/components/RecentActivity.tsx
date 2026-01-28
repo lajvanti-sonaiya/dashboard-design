@@ -43,7 +43,27 @@ const RecentActivity = () => {
       project: "Platform",
       time: "1 hour ago",
       initials: "A",
-      color: colors.purple.main,
+      color: colors.blue.main,
+    },
+    {
+      id: 4,
+      user: "Alex",
+      action: "completed",
+      target: "E-commerce Platform",
+      project: "Platform",
+      time: "1 hour ago",
+      initials: "A",
+      color: colors.red.main,
+    },
+    {
+      id: 5,
+      user: "Alex",
+      action: "completed",
+      target: "E-commerce Platform",
+      project: "Platform",
+      time: "1 hour ago",
+      initials: "A",
+      color: colors.orange.main,
     },
   ];
 
@@ -77,7 +97,7 @@ const RecentActivity = () => {
           <ListItem
             key={activity.id}
             sx={{
-                padding:0,
+              padding: 0,
               alignItems: "flex-start",
             }}
           >
@@ -107,10 +127,9 @@ const RecentActivity = () => {
                 </Typography>
               }
               secondary={
-             
-                  <Typography sx={{ fontSize: "8px" }}>
-                    {activity.time}
-                  </Typography>
+                <Typography sx={{ fontSize: "8px" }}>
+                  {activity.time}
+                </Typography>
               }
             />
           </ListItem>

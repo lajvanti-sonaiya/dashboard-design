@@ -1,6 +1,6 @@
 "use client";
 
-import { styled, Theme, CSSObject, useTheme } from "@mui/material/styles";
+import { styled, Theme, CSSObject } from "@mui/material/styles";
 import {
   Box,
   CssBaseline,
@@ -14,10 +14,8 @@ import {
   Button,
   IconButton,
   Drawer as MuiDrawer,
-  useMediaQuery,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
@@ -25,6 +23,8 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { colors } from "../../mui/colour";
+import { useIsMobileOrTablet } from "@/mui/hooks/useIsMobileOrTablet";
+import { Close } from "@mui/icons-material";
 
 const drawerWidth = 280;
 export const MenuItems = [
@@ -100,8 +100,7 @@ const DesktopDrawer = styled(MuiDrawer, {
 }));
 
 export default function Sidebar() {
-  const theme = useTheme();
-  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMobileOrTablet = useIsMobileOrTablet();
   const [open, setOpen] = useState(!isMobileOrTablet);
 
   useEffect(() => {
@@ -113,38 +112,48 @@ export default function Sidebar() {
       <CssBaseline />
 
       <DrawerHeader>
-        {open ? (
-          <Box display="flex" gap={1.5} alignItems="center">
-            <Box
-              sx={{
-                height: 42,
-                width: 42,
-                borderRadius: 2,
-                background: colors.gradients,
-                color: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 600,
-              }}
-            >
-              N
-            </Box>
-            <Typography
-              sx={{
-                fontWeight: 600,
-                fontSize: 22,
-                background: colors.gradients,
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              Nexus
-            </Typography>
+        <Box
+          display="flex"
+          gap={1.5}
+          alignItems="center"
+          justifyItems={"flex-end"}
+        >
+          <Box
+            sx={{
+              height: 42,
+              width: 42,
+              borderRadius: 2,
+              background: colors.gradients,
+              color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: 600,
+            }}
+          >
+            N
           </Box>
-        ) : (
-          <Button variant="contained">N</Button>
-        )}
+          <Typography
+            sx={{
+              fontWeight: 600,
+              fontSize: 22,
+              background: colors.gradients,
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            Nexus
+          </Typography>
+          {isMobileOrTablet && (
+            <IconButton
+              size="medium"
+              sx={{ marginLeft: "40px" }}
+              onClick={() => setOpen(false)}
+            >
+              <Close fontSize="small" />
+            </IconButton>
+          )}
+        </Box>
       </DrawerHeader>
 
       <List sx={{ marginX: "10px" }}>
@@ -169,13 +178,16 @@ export default function Sidebar() {
                 <ListItem
                   key={menu.label}
                   disablePadding
-                  sx={{ display: "block", color: colors.secondary }}
+                  sx={{
+                    display: "block",
+
+                    color: colors.secondary,
+                  }}
                 >
                   <ListItemButton
                     sx={[
                       {
                         minHeight: 48,
-                        // px: 2.5,
                         padding: "12px 16px",
                         ":hover": {
                           backgroundColor: colors.blue.light,
@@ -230,7 +242,13 @@ export default function Sidebar() {
                     />
 
                     {menu.notification && (
-                      <Badge badgeContent={menu.notification} color="error" />
+                      <Badge
+                        badgeContent={menu.notification}
+                        color="error"
+                        sx={{
+                          marginRight: "12px",
+                        }}
+                      />
                     )}
                   </ListItemButton>
                 </ListItem>
@@ -243,20 +261,23 @@ export default function Sidebar() {
   );
 
   return (
-    <>
+    <Box sx={{ backgroundColor: "red" }}>
       {isMobileOrTablet && (
-        <IconButton
-          color="primary"
-          onClick={() => setOpen(true)}
+        <Box
           sx={{
             position: "fixed",
-            top: 16,
-            left: 16,
+            backgroundColor: colors.background,
+            top: 0,
+            left: 0,
             paddingLeft: "15px",
+            zIndex: 2,
+            width: "100%",
           }}
         >
-          <MenuIcon />
-        </IconButton>
+          <IconButton color="primary" onClick={() => setOpen(true)}>
+            <MenuIcon />
+          </IconButton>
+        </Box>
       )}
 
       {!isMobileOrTablet && (
@@ -271,10 +292,17 @@ export default function Sidebar() {
           open={open}
           onClose={() => setOpen(false)}
           ModalProps={{ keepMounted: true }}
+          hideBackdrop
+          sx={{
+            pointerEvents: open ? "auto" : "none",
+            "& .MuiDrawer-paper": {
+              width: 240,
+            },
+          }}
         >
           {drawerContent}
         </MuiDrawer>
       )}
-    </>
+    </Box>
   );
 }

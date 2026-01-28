@@ -18,30 +18,41 @@ const actions = [
 const QuickActions = () => {
   return (
     <BoxContainer>
-      <Typography sx={{ fontSize: "14px", fontWeight: 700, mb: 3 }}>
-        Quick Actions
-      </Typography>
+        <Typography sx={{ fontSize: "14px", fontWeight: 700, mb: 3 }}>
+          Quick Actions
+        </Typography>
 
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
-        {actions.map((action, index) => (
-          <Grid size={6} key={index}>
-            {" "}
-            <Box
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              gap={1}
+        <Grid
+          container
+          spacing={2}
+
+        >
+          {actions.map((action, index) => (
+            <Grid
+              size={{
+                xs:6,
+                sm: 3,
+                lg: 6,
+              }}
+              key={index}
             >
-              <IconBox colour={action.color} icon={action.icon} />
-              {action.label && (
-                <Typography sx={{ fontSize: "12px" }} color="secondary">
-                  {action.label}
-                </Typography>
-              )}
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
+              {" "}
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                gap={1}
+              >
+                <IconBox colour={action.color} icon={action.icon} />
+                {action.label && (
+                  <Typography sx={{ fontSize: "12px" }} color="secondary">
+                    {action.label}
+                  </Typography>
+                )}
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
     </BoxContainer>
   );
 };

@@ -10,10 +10,9 @@ const Calender = () => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           sx={{
-            width: 250,
+            width: "100%",
             height: 270,
             margin: 0,
-           
           }}
           slotProps={{
             calendarHeader: {
@@ -21,7 +20,7 @@ const Calender = () => {
                 "&.MuiPickersCalendarHeader-root": {
                   margin: 0,
                   padding: 0,
-                  fontWeight:500,
+                  fontWeight: 500,
 
                   ".MuiPickersCalendarHeader-labelContainer": {
                     fontWeight: 700,
@@ -42,7 +41,7 @@ const Calender = () => {
                   },
                 },
 
-                "&:hover": { background: colors.gradients},
+                "&:hover": { background: colors.gradients },
               },
             },
           }}

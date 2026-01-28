@@ -2,6 +2,7 @@
 import {
   Box,
   Button,
+  IconButton,
   InputAdornment,
   TextField,
   Typography,
@@ -11,26 +12,38 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { colors } from "../../mui/colour";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
+import { useIsMobileOrTablet } from "@/mui/hooks/useIsMobileOrTablet";
 
 const DashbordHeader = () => {
+  const isMobileOrTablet = useIsMobileOrTablet();
   return (
     <Box
       sx={{
         display: "flex",
-         flexDirection: {
-            md: "column",
-            lg: "row",
-          },
+        flexDirection: {
+          xs: "column",
+          sm: "row",
+          md: "row",
+          lg: "row",
+        },
         justifyContent: "space-between",
         alignItems: "center",
-        gap:"10px"
+        gap: "10px",
       }}
     >
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: 1,
+          gap: {
+            xs:0,
+            lg:1
+          },
+          width: {
+            xs: "100%",
+            sm:"50%",
+            lg: "50%",
+          },
         }}
       >
         <Typography
@@ -46,7 +59,7 @@ const DashbordHeader = () => {
         >
           Good morning,James
         </Typography>
-        <Typography sx={{fontSize:"14px"}} color="text.secondary" > 
+        <Typography sx={{ fontSize: "14px" }} color="text.secondary">
           here what happing with your project today{" "}
         </Typography>
       </Box>
@@ -64,10 +77,17 @@ const DashbordHeader = () => {
           }}
         />{" "}
         <IconBox colour={colors["gray"]} icon={<NotificationsActiveIcon />} />
-        <Button variant="contained" startIcon={<AddIcon />}>
-          {" "}
-          New Project
-        </Button>
+        {isMobileOrTablet ? (
+          <IconButton
+            sx={{ background: colors.gradients, borderRadius: "10px" , color:colors.white  }}
+          >
+            <AddIcon />
+          </IconButton>
+        ) : (
+          <Button variant="contained" startIcon={<AddIcon />}>
+            New Project
+          </Button>
+        )}
       </Box>
     </Box>
   );

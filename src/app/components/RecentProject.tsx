@@ -16,7 +16,6 @@ import {
 import { colors } from "../../mui/colour";
 import BoxContainer from "./common/BoxContainer";
 import StatusChip from "./common/StatusChip";
-import { blue } from "@mui/material/colors";
 const RecentProjectsTable = () => {
   const recentProjects = [
     {
@@ -107,8 +106,24 @@ const RecentProjectsTable = () => {
 
   return (
     <BoxContainer>
-      <Box display={"flex"} flexDirection={"column"} gap={3} >
-        <Box sx={{ display: "flex", flexDirection: "row", justifyContent:"space-between",height:"25px" }}>
+      <Box display={"flex"} flexDirection={"column"} gap={3}>
+        <Box
+          sx={{
+            display: "flex",
+
+            flexDirection: {
+              xs: "column",
+              sm:"row",
+              lg: "row",
+            },
+            justifyContent: "space-between",
+            height: {
+                xs: "50px",
+                sm:"25px",
+              lg: "25px",
+            },
+          }}
+        >
           <Typography fontWeight={600} mb={2}>
             Recent Projects
           </Typography>

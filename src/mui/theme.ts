@@ -28,11 +28,9 @@ export const theme = createTheme({
         input: {
           padding: "10px 16px",
           font: "13px",
-          
         },
 
         root: {
-          
           backgroundColor: colors.white,
           borderRadius: "10px",
 
@@ -46,14 +44,12 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: ({ theme }) => ({
-          fontSize: "8px",
+          fontSize: "12px",
           textTransform: "capitalize",
- 
-
 
           [theme.breakpoints.up("sm")]: {
             padding: "6px 10px",
-            fontSize: "8px",
+            fontSize: "14px",
             whiteSpace: "nowrap",
             "& .MuiButton-startIcon": {
               marginRight: "10px",
@@ -65,7 +61,7 @@ export const theme = createTheme({
           },
           [theme.breakpoints.up("md")]: {
             padding: "0px 20px",
-            fontSize: "13px",
+            fontSize: "14px",
             "& .MuiButton-startIcon": {
               marginRight: "10px",
               "& .MuiSvgIcon-root": {
@@ -83,13 +79,12 @@ export const theme = createTheme({
           color: "#fff",
         },
 
-        outlined:
-        {
-          padding:"0px",  
-          color:colors.secondary,
-          background:colors.backgroundSecondary,
-          borderColor:colors.gray.dark
-        }
+        outlined: {
+          padding: "0px",
+          color: colors.secondary,
+          background: colors.backgroundSecondary,
+          borderColor: colors.gray.dark,
+        },
       },
     },
   },

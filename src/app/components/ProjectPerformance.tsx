@@ -55,6 +55,12 @@ export default function ProjectPerformance() {
       <Box
         sx={{
           display: "flex",
+          flexDirection:{
+            xs:"column",
+            sm:"row",
+            lg:"row"
+          },
+          gap:"20px",
           justifyContent: "space-between",
           alignItems: "start",
         }}

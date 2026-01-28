@@ -1,16 +1,16 @@
 "use client";
 
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import DashbordHeader from "./DashbordHeader";
 import { colors } from "../../mui/colour";
 import StatsCardData from "./statsCardData";
 import ProjectPerformance from "./ProjectPerformance";
 import TaskDistribution from "./TaskDistribution";
 import RecentProjectsTable from "./RecentProject";
+import { useIsMobileOrTablet } from "@/mui/hooks/useIsMobileOrTablet";
 
 const DashboardComponent = () => {
-  const theme = useTheme();
-  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMobileOrTablet = useIsMobileOrTablet();
 
   return (
     <Box
@@ -19,13 +19,8 @@ const DashboardComponent = () => {
         display: "flex",
         flexDirection: "column",
         gap: 4,
-        // padding: "24px 32px",
-        padding:isMobileOrTablet ? "60px 32px" : "24px 32px",
+        padding: isMobileOrTablet ? "50px 20px" : "24px 32px",
         backgroundColor: colors.background,
-        width: {
-          md: "500px",
-          lg: "auto",
-        },
         minWidth: {
           lg: "1213px",
         },

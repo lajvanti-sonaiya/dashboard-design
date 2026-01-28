@@ -31,15 +31,18 @@ const TaskDistribution = () => {
         <Box
           sx={{
             display: "flex",
-            // justifyContent: "space-between",
             alignItems: "center",
+            justifyItems: "center",
+            justifyContent: "center",
+            flexDirection: {
+              xs: "column",
+              sm: "row",
+              lg: "row",
+            },
             gap: 3,
           }}
         >
           <PieChart
-            // sx={{
-            //   "-webkit-flex": 0,
-            // }}
             width={200}
             height={200}
             hideLegend={true}
@@ -54,7 +57,23 @@ const TaskDistribution = () => {
             ]}
           />
 
-          <Box position="absolute" left="80px" textAlign="center">
+          <Box
+            sx={{
+              position: "absolute",
+              left: {
+                sm: "145px",
+                md:"185px",
+                lg: "72px",
+              },
+              top: {
+                xs: "140px",
+                sm: "135px",
+                mg:"150px",
+                lg: "120px",
+              },
+              textAlign: "center",
+            }}
+          >
             <Typography fontWeight={700} fontSize="22px">
               {totalTasks}
             </Typography>
@@ -67,7 +86,11 @@ const TaskDistribution = () => {
             </Typography>
           </Box>
 
-          <Box>
+          <Box
+            sx={{
+              width: "50%",
+            }}
+          >
             {taskDistributionData.map((item) => (
               <Box
                 key={item.id}
