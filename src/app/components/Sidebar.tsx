@@ -1,0 +1,308 @@
+"use client";
+
+import { styled, Theme, CSSObject } from "@mui/material/styles";
+import {
+  Box,
+  CssBaseline,
+  Typography,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Badge,
+  Button,
+  IconButton,
+  Drawer as MuiDrawer,
+} from "@mui/material";
+import { useEffect, useState } from "react";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import SettingsIcon from "@mui/icons-material/Settings";
+import MenuIcon from "@mui/icons-material/Menu";
+
+import { colors } from "../../mui/colour";
+import { useIsMobileOrTablet } from "@/mui/hooks/useIsMobileOrTablet";
+import { Close } from "@mui/icons-material";
+
+const drawerWidth = 280;
+export const MenuItems = [
+  {
+    section: "MAIN MENU",
+    items: [
+      { label: "Dashboard", icon: <DashboardIcon />, path: "/dashboard" },
+      {
+        label: "Projects",
+        icon: <DashboardIcon />,
+        path: "/project",
+        notification: 10,
+      },
+      { label: "Calender", icon: <CalendarTodayIcon />, path: "/calendar" },
+      {
+        label: "Message",
+        icon: <AssignmentIcon />,
+        path: "/message",
+        notification: 1,
+      },
+    ],
+  },
+  {
+    section: "WORKSPACE",
+    items: [
+      { label: "Documents", icon: <CalendarTodayIcon />, path: "/document" },
+      { label: "Analytics", icon: <CalendarTodayIcon />, path: "/analytics" },
+      { label: "Settings", icon: <SettingsIcon />, path: "/settings" },
+    ],
+  },
+];
+
+const openedMixin = (theme: Theme): CSSObject => ({
+  width: drawerWidth,
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: "hidden",
+});
+
+const closedMixin = (theme: Theme): CSSObject => ({
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: "hidden",
+  width: `calc(${theme.spacing(7)} + 1px)`,
+});
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 3),
+  ...theme.mixins.toolbar,
+}));
+
+const DesktopDrawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+  whiteSpace: "nowrap",
+  boxSizing: "border-box",
+  ...(open && {
+    ...openedMixin(theme),
+    "& .MuiDrawer-paper": openedMixin(theme),
+  }),
+  ...(!open && {
+    ...closedMixin(theme),
+    "& .MuiDrawer-paper": closedMixin(theme),
+  }),
+}));
+
+export default function Sidebar() {
+  const isMobileOrTablet = useIsMobileOrTablet();
+  const [open, setOpen] = useState(!isMobileOrTablet);
+
+  useEffect(() => {
+    setOpen(!isMobileOrTablet);
+  }, [isMobileOrTablet]);
+
+  const drawerContent = (
+    <>
+      <CssBaseline />
+
+      <DrawerHeader>
+        <Box
+          display="flex"
+          gap={1.5}
+          alignItems="center"
+          justifyItems={"flex-end"}
+        >
+          <Box
+            sx={{
+              height: 42,
+              width: 42,
+              borderRadius: 2,
+              background: colors.gradients,
+              color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: 600,
+            }}
+          >
+            N
+          </Box>
+          <Typography
+            sx={{
+              fontWeight: 600,
+              fontSize: 22,
+              background: colors.gradients,
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            Nexus
+          </Typography>
+          {isMobileOrTablet && (
+            <IconButton
+              size="medium"
+              sx={{ marginLeft: "40px" }}
+              onClick={() => setOpen(false)}
+            >
+              <Close fontSize="small" />
+            </IconButton>
+          )}
+        </Box>
+      </DrawerHeader>
+
+      <List sx={{ marginX: "10px" }}>
+        <>
+          {MenuItems.map((group) => (
+            <Box key={group.section} sx={{ mb: 2 }}>
+              {open && (
+                <Typography
+                  sx={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    color: "text.secondary",
+                    px: 2,
+                    mb: 1,
+                  }}
+                >
+                  {group.section}
+                </Typography>
+              )}
+
+              {group?.items.map((menu, index) => (
+                <ListItem
+                  key={menu.label}
+                  disablePadding
+                  sx={{
+                    display: "block",
+
+                    color: colors.secondary,
+                  }}
+                >
+                  <ListItemButton
+                    sx={[
+                      {
+                        minHeight: 48,
+                        padding: "12px 16px",
+                        ":hover": {
+                          backgroundColor: colors.blue.light,
+                          borderRadius: "10px",
+                          color: colors.blue.main,
+                          svg: {
+                            color: colors.blue.main,
+                          },
+
+                          "&:hover::before": {
+                            content: '""',
+                            position: "absolute",
+                            left: 0,
+                            height: "50%",
+                            width: "3px",
+                            backgroundColor: colors.blue.main,
+                          },
+                        },
+                      },
+                      open
+                        ? {
+                            justifyContent: "initial",
+                          }
+                        : {
+                            justifyContent: "center",
+                          },
+                    ]}
+                  >
+                    <ListItemIcon
+                      sx={[
+                        {
+                          minWidth: 0,
+                          justifyContent: "center",
+                          marginRight: 1,
+                          color: "text.secondary",
+                        },
+                      ]}
+                    >
+                      {menu.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={menu.label}
+                      sx={{
+                        "& .MuiTypography-root": {
+                          fontSize: "14px",
+                          fontWeight: 600,
+                        },
+
+                        opacity: 1,
+                        color: colors.textSecondary,
+                      }}
+                    />
+
+                    {menu.notification && (
+                      <Badge
+                        badgeContent={menu.notification}
+                        color="error"
+                        sx={{
+                          marginRight: "12px",
+                        }}
+                      />
+                    )}
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </Box>
+          ))}
+        </>
+      </List>
+    </>
+  );
+
+  return (
+    <Box sx={{ backgroundColor: "red" }}>
+      {isMobileOrTablet && (
+        <Box
+          sx={{
+            position: "fixed",
+            backgroundColor: colors.background,
+            top: 0,
+            left: 0,
+            paddingLeft: "15px",
+            zIndex: 2,
+            width: "100%",
+          }}
+        >
+          <IconButton color="primary" onClick={() => setOpen(true)}>
+            <MenuIcon />
+          </IconButton>
+        </Box>
+      )}
+
+      {!isMobileOrTablet && (
+        <DesktopDrawer variant="permanent" open={open}>
+          {drawerContent}
+        </DesktopDrawer>
+      )}
+
+      {isMobileOrTablet && (
+        <MuiDrawer
+          variant="temporary"
+          open={open}
+          onClose={() => setOpen(false)}
+          ModalProps={{ keepMounted: true }}
+          hideBackdrop
+          sx={{
+            pointerEvents: open ? "auto" : "none",
+            "& .MuiDrawer-paper": {
+              width: 240,
+            },
+          }}
+        >
+          {drawerContent}
+        </MuiDrawer>
+      )}
+    </Box>
+  );
+}
